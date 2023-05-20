@@ -204,7 +204,7 @@ module.exports = {
             Object.keys(nodesGroups).forEach(key => {
             	if (!nodesGroups[key].length) return 
  	
-            	importString +=`${getImportStringFromArray(nodesGroups[key], key === "else" || key === "components")}\n\n`
+            	importString +=`${getImportStringFromArray(nodesGroups[key], key === "else")}\n\n`
             })
       
             return [...fixing, fixer.insertTextBeforeRange([0, importString.length], importString)]

@@ -65,7 +65,7 @@ import Form from "./components/Form";
 import Button from "/components/Button";
 ```
 
-It also further sorts components and user-defined functions, logically separating them by path, while retaining comments related to these imports:
+It also further sorts the user-defined functions by logically separating them by path while keeping the comments associated with those imports:
 
 #### Unsorted example
 
@@ -108,7 +108,6 @@ import Background from "./components/Background";
 import Form from "./components/Form";
 // perfect button 
 import Button from "/components/Button"; // Components
-
 import ElseComponent from "else"
 import ElseComponent2 from "else/second" // This components too
 ```
