@@ -14,10 +14,10 @@ and add this to your eslint config file:
 
 ```json
 {
-    "plugins": ["import-rule"],
+    "plugins": ["import-rules-pack"],
     "rules": {
-        "import-rule/semicolon-after-import": "warn",
-        "import-rule/import-combination": "warn"
+        "import-rules-pack/semicolon-after-import": "warn",
+        "import-rules-pack/import-combination": "warn"
     }
 }
 ```
