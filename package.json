@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-import-rules-pack",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "eslint import rules plugin",
   "main": "./index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "eslint": "*"
   },
   "files": [
-    "dist"
+    "rules",
+    "index.js"
   ]
 }

@@ -1,4 +1,4 @@
-# eslint-plugin-import-rule
+# eslint-plugin-import-rules-pack
 
 This plugin will help with writing sorted imports in your code
 
@@ -7,7 +7,19 @@ This plugin will help with writing sorted imports in your code
 You can can install this plugin with npm
 
 ```bash
-  npm install -D eslint-plugin-import-rule
+  npm install -D eslint-plugin-import-rules-pack
+```
+
+and add this to your eslint config file:
+
+```json
+{
+    "plugins": ["import-rule"],
+    "rules": {
+        "import-rule/semicolon-after-import": "warn",
+        "import-rule/import-combination": "warn"
+    }
+}
 ```
     
 ## Usage/Examples
