@@ -1,0 +1,17 @@
+{
+  "name": "eslint-plugin-import-rules",
+  "version": "1.0.0",
+  "description": "eslint import rules plugin",
+  "main": "./index.js",
+  "scripts": {
+    "public": "npm version patch && npm publish"
+  },
+  "author": "The_Fiafi <thewaffelfiafi@gmail.com>",
+  "license": "ISC",
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "files": [
+    "dist"
+  ]
+}
