@@ -12,7 +12,7 @@ module.exports = {
 
         const getNodePosition = (node) => [node.loc.start.line - 1, node.loc.end.line - 1]
 
-        const isHook = (specifiers) => specifiers.reduce((acc, specifier) => specifier.local.name.slice(0, 3) === "use" || specifier.parent.source.value === "react" || acc, false)
+        const isHook = (specifiers) => specifiers.reduce((acc, specifier) => specifier.local.name.slice(0, 3) === "use" && specifier.local.name.slice(3, 4) === specifier.local.name.slice(3, 4).toUpperCase() || specifier.parent.source.value === "react" || acc, false)
 
         const isStyle = (specifiers) => !specifiers.length
 
@@ -123,17 +123,17 @@ module.exports = {
                 }
             })
       
-          	const pageEnd = node.parent.end
-            const endDeleteRange = (firstNotImportNode && firstNotImportNode.start - 1) || pageEnd
-   
+          	const pageEnd = node.parent.range[1]
+            const endDeleteRange = (firstNotImportNode && firstNotImportNode.range[0] - 1) || pageEnd
+          
             fixingStartRange.forEach((range) => {
                 if (range[1] <= endDeleteRange) return
-       
+   
                 fixing.push(fixer.removeRange(range))
             })
-      
+            
             fixing.push(fixer.removeRange([0, endDeleteRange]))
-      
+            
             const getImportStringFromArray = (nodeArr, deep) => {
                 let output = ""
         
@@ -185,16 +185,13 @@ module.exports = {
                     })
           
                     group.forEach((groupEl) => {
-                      
                         groupImportAsString(groupEl)
             
                         output += `\n`
                     })
           
                     output = output.slice(0, -1)
-                }else {
-                    groupImportAsString(nodeArr)
-                }
+                }else groupImportAsString(nodeArr)
         
                 return output.slice(1)
             }
@@ -206,8 +203,8 @@ module.exports = {
  	
             	importString +=`${getImportStringFromArray(nodesGroups[key], key === "else")}\n\n`
             })
-      
-            return [...fixing, fixer.insertTextBeforeRange([0, importString.length], importString)]
+            console.log(fixing, fixer.insertTextBeforeRange([importString.length], importString), importString.length)
+            return [...fixing, fixer.insertTextBeforeRange([importString.length - 2], importString)]
         }
 
         return {
