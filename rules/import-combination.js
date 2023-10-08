@@ -125,7 +125,7 @@ module.exports = {
       
           	const pageEnd = node.parent.range[1]
             const endDeleteRange = (firstNotImportNode && firstNotImportNode.range[0] - 1) || pageEnd
-          
+  
             fixingStartRange.forEach((range) => {
                 if (range[1] <= endDeleteRange) return
    
@@ -203,9 +203,9 @@ module.exports = {
  	
             	importString +=`${getImportStringFromArray(nodesGroups[key], key === "else")}\n\n`
             })
-            console.log(fixing, fixer.insertTextBeforeRange([importString.length], importString), importString.length)
-            return [...fixing, fixer.insertTextBeforeRange([importString.length - 2], importString)]
-        }
+            console.log(fixer.insertTextBeforeRange([endDeleteRange], importString))
+            return [...fixing, fixer.insertTextBeforeRange([endDeleteRange], importString)]
+        } 
 
         return {
             ImportDeclaration(node) {
@@ -235,8 +235,6 @@ module.exports = {
                     })
           
                     if (similar.length) {
-         
-
                         context.report({
                             node,
                             message: "Similar imports should be combined",
